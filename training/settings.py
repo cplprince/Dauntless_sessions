@@ -25,7 +25,7 @@ SECRET_KEY = '$g*5l6dgr*!!gpt9!j7i@d_ta+al2y-gwm(1py&bhuj5vormqm'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [".codeanyapp.com"]
 
 
 # Application definition
@@ -40,7 +40,7 @@ INSTALLED_APPS = [
   #3rd
   
   #own
-  
+  "pages",
 ]
 
 MIDDLEWARE = [
