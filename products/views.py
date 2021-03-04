@@ -32,4 +32,11 @@ def product_api_detail_view(request, pk, *args, **kwargs):
     except Product.DoesNotExist:
         return JsonResponse({"message": "Not found"})
     return JsonResponse({"id": obj.id})
+  
+def product_list_view(request):
+    qs = Product.objects.all()
+    context = {"object_list": qs}
+    return render(request,"products/list.html", context)
+    
+  
     

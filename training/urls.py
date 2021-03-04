@@ -15,15 +15,24 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, re_path
 
+from accounts.views import (
+    login_view,
+    logout_view
+)
+
 from products.views import (
     home_view,
     product_create_view,
     product_detail_view,
-    product_api_detail_view
+    product_api_detail_view,
+    product_list_view
 )
 
 urlpatterns = [
+    path("login/", login_view),
+    path("logout/", logout_view),
     path('home/', home_view),
+    path("products/", product_list_view),
     path('products/create/', product_create_view),
     path('products/<int:pk>/', product_detail_view),
     re_path(r'api/products/(?P<pk>\d+)/', product_api_detail_view),
