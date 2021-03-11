@@ -1,5 +1,7 @@
 from django.http import HttpResponse, JsonResponse, Http404
 from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
+from django.contrib.admin.views.decorators import staff_member_required
 
 from .forms import ProductModelForm
 from .models import Product
@@ -8,6 +10,8 @@ def home_view(request, *args, **kwargs):
     context = {"name": "abc"}
     return render(request, "home.html", context)
 
+  
+@staff_member_required
 def product_create_view(request, *args, **kwargs):
     form = ProductModelForm(request.POST or None)
     if form.is_valid():
@@ -33,6 +37,7 @@ def product_api_detail_view(request, pk, *args, **kwargs):
         return JsonResponse({"message": "Not found"})
     return JsonResponse({"id": obj.id})
   
+@login_required
 def product_list_view(request):
     qs = Product.objects.all()
     context = {"object_list": qs}

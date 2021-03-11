@@ -17,7 +17,8 @@ from django.urls import path, re_path
 
 from accounts.views import (
     login_view,
-    logout_view
+    logout_view,
+    register_view     
 )
 
 from products.views import (
@@ -31,6 +32,7 @@ from products.views import (
 urlpatterns = [
     path("login/", login_view),
     path("logout/", logout_view),
+    path("register/", register_view),
     path('home/', home_view),
     path("products/", product_list_view),
     path('products/create/', product_create_view),
