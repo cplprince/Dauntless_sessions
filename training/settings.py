@@ -25,8 +25,7 @@ SECRET_KEY = '$g*5l6dgr*!!gpt9!j7i@d_ta+al2y-gwm(1py&bhuj5vormqm'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [".codeanyapp.com"]
-
+ALLOWED_HOSTS = []
 
 # Application definition
 
@@ -38,7 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
   #3rd
-  
+
   #own
   "products",
   "accounts",
@@ -105,8 +104,8 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
-LOGIN_URL = "/login"
-LOGIN_REDIRECT_URL = "/home"
+LOGIN_URL = "/login/"
+LOGIN_REDIRECT_URL = "/"
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/

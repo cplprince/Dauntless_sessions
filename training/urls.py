@@ -14,11 +14,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, re_path
+from django.views.generic import TemplateView
 
 from accounts.views import (
     login_view,
     logout_view,
-    register_view     
+    register_view
 )
 
 from products.views import (
@@ -30,6 +31,7 @@ from products.views import (
 )
 
 urlpatterns = [
+    path('', TemplateView.as_view(template_name='base.html')),
     path("login/", login_view),
     path("logout/", logout_view),
     path("register/", register_view),

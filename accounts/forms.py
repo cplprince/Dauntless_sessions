@@ -10,24 +10,25 @@ class loginForm(forms.Form):
   password = forms.CharField(
           widget = forms.PasswordInput(
               attrs = {
+                "id": "user-password",
                 "class" : "form-control",
-                "id": "user-password"
               }
           )
   )
-  
+
   #def clean(self):
-  #  username = self.cleaned_data.get("username") 
-  #  password = self.cleaned_data.get("password") 
-  
+  #  username = self.cleaned_data.get("username")
+  #  password = self.cleaned_data.get("password")
+
+
   def clean_user(self):
-    username = self.cleaned_data.get("username") 
-    qs = user.objects.filter(username__iexact=username) # ""ThisIsMyNAME" ==> "thisismyname"" 
+    username = self.cleaned_data.get("username")
+    qs = user.objects.filter(username__iexact=username) # ""ThisIsMyNAME" ==> "thisismyname""
     if not qs.exist():
       raise forms.ValidationsError("This is an invalid username.")
     return username
-      
-      
+
+
 class registerForm(forms.Form):
   username = forms.CharField()
   email = forms.CharField()
@@ -49,7 +50,7 @@ class registerForm(forms.Form):
       }
     )
   )
-  
+
   def clean_username(self):
     username = self.cleaned_data.get("username")
     qs = User.objects.filter(username__iexact = username) #NULL
@@ -58,18 +59,10 @@ class registerForm(forms.Form):
     if qs.exists():
       raise forms.ValidationsError("This is an invalid username")
     return username
-  
+
   def clean_email(self):
     email = self.cleaned_data.get("email")
     qs = User.objects.filter(email__iexact = email) #null {"email":"xxx@email.com"}
     if qs.exists(): #True == NUll #False == {}
       raise forms.ValidationsError("This email is already in use")
     return email
-  
-  
-  
-  
-  
-  
-  
-  
